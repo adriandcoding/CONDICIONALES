@@ -1,9 +1,10 @@
+
 .container{
-  margin-top: 15%;
   display: flex;
+  margin-top: 15%;
   justify-content: center;
   align-items: center;
-  background-color: #c92222;
+  
 }
 .carta {
   width: 150px;
@@ -22,12 +23,19 @@ img {
 }
 
 .contenedor {
-  background-color: #170eb5;
-    position: relative; /* Opcional, solo necesario si quieres centrar relativamente dentro de otro elemento */
-    width: 500px; /* Ancho del contenedor */
-    height: 500px; /* Altura del contenedor, en este caso, el 100% de la altura de la ventana */
-    display: flex; /* Utilizaremos flexbox para centrar */
-    justify-content: center; /* Centrar horizontalmente */
-    align-items: center; /* Centrar verticalmente */
+  border: 10px solid black;
+  margin: 0 auto;
+  margin-top: 120px;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  background-color: #ffffff;
+  width: 250px;
+  height: 150px;
+  border-radius: 45px;
+  -webkit-border-radius: 45px;
+  -moz-border-radius: 45px;
+  -ms-border-radius: 45px;
+  -o-border-radius: 45px;
 }
 
