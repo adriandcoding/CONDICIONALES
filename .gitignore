@@ -1,0 +1,25 @@
+# Ignorar archivos y directorios generados por el sistema operativo
+.DS_Store
+Thumbs.db
+
+# Ignorar directorio node_modules
+node_modules/
+
+# Ignorar archivos de construcción
+dist/
+build/
+*.log
+
+# Ignorar archivos de configuración locales
+.env
+.env.local
+.env.*.local
+
+# Ignorar archivos de respaldo y temporales
+*.bak
+*.swp
+*~
+
+# Ignorar archivos de caché
+.cache/
+.cache-loader/
