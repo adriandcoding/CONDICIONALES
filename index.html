@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./src/style.css" />
   </head>
   <body>
+    <h1>Juego de Cartas 7 y 1/2</h1>
     <div class="container">
       <div class="card">
         <img
@@ -19,13 +20,23 @@
         src=https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/back.jpg
         alt="1 de espadas">
       </div>
+      
     </div>
-    <div class="cuadro-resultado">
-      
-        <input class="puntuacion" type="number" name="" id="Numero"  />
-        
-        <button id="botón">PUNTOS</button>
-      
+    
+    <div class="puntuacion">
+      <h4 class="puntos">PUNTOS:</h4>
+      453
+    </div>
+    <div class="game__action">
+      <button id="stand" class="btn btn--secondary">Plantarse</button>
+      <button id="add-card" class="btn btn--primary">Pedir carta</button>
+      <button id="next-move" class="btn btn--secondary btn--hiden">
+        ¿Y si...?
+      </button>
+      <button id="new-game" class="btn btn--primary btn--center btn--hiden">
+        Nueva partida
+      </button>
     </div>
   </body>
 </html>
+
