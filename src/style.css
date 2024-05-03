@@ -1,7 +1,11 @@
-
+* {
+  margin: 0px;
+  text-decoration: none;
+  box-sizing: border-box;
+}
 .container{
   display: flex;
-  margin-top: 15%;
+  margin-top: 120px;
   justify-content: center;
   align-items: center;
   
@@ -25,12 +29,11 @@ img {
 .contenedor {
   border: 10px solid black;
   margin: 0 auto;
-  margin-top: 120px;
-  display: flex;
+  margin-top: 64px;
   justify-content:center;
   align-items: center;
   background-color: #ffffff;
-  width: 250px;
+  width: 150px;
   height: 150px;
   border-radius: 45px;
   -webkit-border-radius: 45px;
@@ -38,4 +41,17 @@ img {
   -ms-border-radius: 45px;
   -o-border-radius: 45px;
 }
-
+.texto{
+  font-family:Georgia, 'Times New Roman', Times, serif ;
+  font-size: 32PX;
+  padding-top: 32px;
+  display: flex;
+  justify-content: center;
+}
+.puntuacion{
+  font-family:Georgia, 'Times New Roman', Times, serif ;
+  font-size: 48PX;
+  padding-top: 32px;
+  display: flex;
+  justify-content: center;
+}
