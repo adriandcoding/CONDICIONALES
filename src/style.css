@@ -26,7 +26,7 @@ a:hover {
 }
 
 body {
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   margin: 0;
   display: flex;
   place-items: center;
@@ -39,7 +39,7 @@ body {
 }
 h1 {
   color: black;
-  font-size: 32px;;
+  font-size: 32px;
   line-height: 1.1;
 }
 
@@ -64,7 +64,7 @@ h1 {
 }
 
 .card {
-padding:32px;
+  padding: 32px;
 }
 
 .read-the-docs {
@@ -85,7 +85,6 @@ padding:32px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   color: rgb(206, 76, 29);
-  
 }
 .puntos {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -95,7 +94,7 @@ padding:32px;
 button {
   border-radius: 8px;
   border: 1px solid transparent;
- font-size: 1em;
+  font-size: 1em;
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
@@ -107,9 +106,6 @@ button {
   -ms-transition: border-color 0.25s;
   -o-transition: border-color 0.25s;
 }
-
-
-
 
 @media (prefers-color-scheme: light) {
   :root {
