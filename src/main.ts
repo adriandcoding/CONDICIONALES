@@ -12,11 +12,17 @@ const mostrarPuntuacion = () => {
 };
 document.addEventListener("DOMContentLoaded", mostrarPuntuacion);
 //función para mostrar la carta
-
+//función para generar carta aleatoria
+function pideCarta() {
+  let cartaAleatoria = Math.floor(Math.random() * 10) + 1;
+  while (cartaAleatoria === 8 || cartaAleatoria === 9) {
+    cartaAleatoria = Math.floor(Math.random() * 10) + 1;
+  }
+  return cartaAleatoria;
+}
 const mostrarCarta = (cartaAleatoria: number): string => {
   let imagen;
-  
-// Mapear el valor de la carta a la imagen correspondiente
+// Mapeando el valor
   switch (cartaAleatoria) {
     case 1:
       imagen =
@@ -65,16 +71,6 @@ const mostrarCarta = (cartaAleatoria: number): string => {
   }
   return imagen;
 };
-//función para generar carta aleatoria
-function pideCarta() {
-  let cartaAleatoria = Math.floor(Math.random() * 10) + 1;
-  while (cartaAleatoria === 8 || cartaAleatoria === 9) {
-    cartaAleatoria = Math.floor(Math.random() * 10) + 1;
-  }
-  return cartaAleatoria;
-}
-
-
 //capturando el botón de pedir carta y agregando funcionalidad
 if (pedirCarta && pedirCarta instanceof HTMLButtonElement) {
   pedirCarta.addEventListener("click",pideCarta);
