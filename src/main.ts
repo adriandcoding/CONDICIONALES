@@ -1,10 +1,9 @@
-let puntos: number = 1;
+let puntos: number = 4;
 
 const Puntuacion = document.querySelector(".puntuacion");
 const pedirCarta = document.querySelector(".pedir-carta");
-// Mostrar la imagen en algún lugar de tu aplicación
-// Por ejemplo, cambiar el src de una etiqueta img
-document.querySelector(".cardfront").src = imagen;
+const cartaMostrada = document.querySelector(".cardfront")
+
 //función para mostrar la puntuación
 const mostrarPuntuacion = () => {
   if (Puntuacion !== null && Puntuacion !== undefined) {
@@ -13,22 +12,21 @@ const mostrarPuntuacion = () => {
 };
 document.addEventListener("DOMContentLoaded", mostrarPuntuacion);
 //función para generar numero aleatorio
-function dameCarta() {
+function pideCarta() {
   let numeroAleatorio = Math.floor(Math.random() * 10) + 1;
   while (numeroAleatorio === 8 || numeroAleatorio === 9) {
     numeroAleatorio = Math.floor(Math.random() * 10) + 1;
   }
-
   return numeroAleatorio;
 }
 
-console.log(dameCarta());
+
 //capturando el botón de pedir carta y agregando funcionalidad
 
 if (pedirCarta && pedirCarta instanceof HTMLButtonElement) {
-  pedirCarta.addEventListener("click", dameCarta);
+  pedirCarta.addEventListener("click",pideCarta);
 }
-const mostrarCarta = (carta: number): void => {
+const mostrarCarta = (carta: number): string => {
   let imagen;
 
   // Mapear el valor de la carta a la imagen correspondiente
@@ -78,4 +76,5 @@ const mostrarCarta = (carta: number): void => {
       imagen =
         "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/back.jpg";
   }
+  return imagen;
 };
