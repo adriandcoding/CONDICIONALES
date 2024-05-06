@@ -11,26 +11,13 @@ const mostrarPuntuacion = () => {
   }
 };
 document.addEventListener("DOMContentLoaded", mostrarPuntuacion);
-//función para generar numero aleatorio
-function pideCarta() {
-  let numeroAleatorio = Math.floor(Math.random() * 10) + 1;
-  while (numeroAleatorio === 8 || numeroAleatorio === 9) {
-    numeroAleatorio = Math.floor(Math.random() * 10) + 1;
-  }
-  return numeroAleatorio;
-}
+//función para mostrar la carta
 
-
-//capturando el botón de pedir carta y agregando funcionalidad
-
-if (pedirCarta && pedirCarta instanceof HTMLButtonElement) {
-  pedirCarta.addEventListener("click",pideCarta);
-}
-const mostrarCarta = (carta: number): string => {
+const mostrarCarta = (cartaAleatoria: number): string => {
   let imagen;
-
-  // Mapear el valor de la carta a la imagen correspondiente
-  switch (carta) {
+  
+// Mapear el valor de la carta a la imagen correspondiente
+  switch (cartaAleatoria) {
     case 1:
       imagen =
         "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/1_as-copas.jpg";
@@ -60,15 +47,15 @@ const mostrarCarta = (carta: number): string => {
         "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/7_siete-copas.jpg";
 
       break;
-    case 8:
+    case 10:
       imagen =
         "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/10_sota-copas.jpg";
       break;
-    case 9:
+    case 11:
       imagen =
         "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/11_caballo-copas.jpg";
       break;
-    case 10:
+    case 12:
       imagen =
         "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/12_rey-copas.jpg";
       break;
@@ -78,3 +65,18 @@ const mostrarCarta = (carta: number): string => {
   }
   return imagen;
 };
+//función para generar carta aleatoria
+function pideCarta() {
+  let cartaAleatoria = Math.floor(Math.random() * 10) + 1;
+  while (cartaAleatoria === 8 || cartaAleatoria === 9) {
+    cartaAleatoria = Math.floor(Math.random() * 10) + 1;
+  }
+  return cartaAleatoria;
+}
+
+
+//capturando el botón de pedir carta y agregando funcionalidad
+if (pedirCarta && pedirCarta instanceof HTMLButtonElement) {
+  pedirCarta.addEventListener("click",pideCarta);
+}
+
