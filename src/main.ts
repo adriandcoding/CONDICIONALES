@@ -1,9 +1,9 @@
-let puntos = "";
+let puntos:number = 1;
 //función para mostrar la puntuación
 const Puntuacion = document.querySelector(".puntuacion");
 const mostrarPuntuacion = () => {
   if (Puntuacion !== null && Puntuacion !== undefined) {
-    Puntuacion.innerHTML = puntos;
+    Puntuacion.innerHTML = puntos.toString();
   }
 };
 document.addEventListener("DOMContentLoaded", mostrarPuntuacion);
@@ -23,5 +23,7 @@ const pedirCarta = document.querySelector(".pedir-carta");
 if (pedirCarta && pedirCarta instanceof HTMLButtonElement) {
   pedirCarta.addEventListener('click', dameCarta);
 }
+
+
 
 
