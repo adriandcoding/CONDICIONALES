@@ -11,7 +11,7 @@ const mostrarPuntuacion = () => {
   }
 };
 document.addEventListener("DOMContentLoaded", mostrarPuntuacion);
-//función para mostrar la carta
+
 //función para generar carta aleatoria
 function pideCarta() {
   let cartaAleatoria = Math.floor(Math.random() * 10) + 1;
