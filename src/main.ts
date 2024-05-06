@@ -4,7 +4,7 @@ const Puntuacion = document.querySelector(".puntuacion");
 const pedirCarta = document.querySelector(".pedir-carta");
 const cartaMostrada = document.querySelector(".cardfront")
 
-//función para mostrar la puntuación
+//función para mostrar la puntuacion
 const mostrarPuntuacion = () => {
   if (Puntuacion !== null && Puntuacion !== undefined) {
     Puntuacion.innerHTML = puntos.toString();
