@@ -1,8 +1,10 @@
-let puntos = 8;
+let puntos = "";
 //función para mostrar la puntuación
+const Puntuacion = document.querySelector(".puntuacion");
 const mostrarPuntuacion = () => {
-  const Puntuación = document.querySelector(".puntuacion");
-  Puntuación.innerHTML = puntos;
+  if (Puntuacion !== null && Puntuacion !== undefined) {
+    Puntuacion.innerHTML = puntos;
+  }
 };
 document.addEventListener("DOMContentLoaded", mostrarPuntuacion);
 //función para generar numero aleatorio
@@ -18,4 +20,8 @@ function dameCarta() {
 console.log(dameCarta())
 //capturando el botón de pedir carta y agregando funcionalidad
 const pedirCarta = document.querySelector(".pedir-carta");
-pedirCarta.addEventListener("click",dameCarta);
+if (pedirCarta && pedirCarta instanceof HTMLButtonElement) {
+  pedirCarta.addEventListener('click', dameCarta);
+}
+
+
