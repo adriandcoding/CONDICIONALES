@@ -151,7 +151,7 @@ const gameOver = (): void => {
 //valorar la opción al plantarse
 const valorar = ():string => {
   let mensaje = "";
-  if (puntosTotales > 4) {
+  if (puntosTotales < 4) {
     mensaje = "Has sido muy conservador";
   }
   if (puntosTotales === 5) {
