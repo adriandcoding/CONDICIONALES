@@ -149,13 +149,20 @@ const gameOver = (): void => {
 };
 
 //valorar la opción al plantarse
-const valorar = () => {
+const valorar = ():string => {
   let mensaje = "";
-  if (puntosTotales > 0) {
-    mensaje = "Sigue jugando";
+  if (puntosTotales > 4) {
+    mensaje = "Has sido muy conservador";
+  }
+  if (puntosTotales === 5) {
+    mensaje = "Te ha entrado el canguelo eh?";
+
+  }
+  if (puntosTotales === 6 || puntosTotales===7) {
+    mensaje = "Casi casi...";
   }
   if (puntosTotales === numeroGanador) {
-    mensaje = "Has Acertado";
+    mensaje = "¡ Lo has clavado! ¡Enhorabuena!";
   }
 
   return mensaje;
