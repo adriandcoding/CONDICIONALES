@@ -53,7 +53,7 @@ const pideCarta = (): void => {
   const puntos = obtenerValorCarta(carta);
   const puntosSumados = sumarPuntos(puntos);
   asignarNuevosPuntos(puntosSumados);
-
+  gameOver();
   mostrarPuntuacion();
 };
 //capturando el botón de pedir carta y agregando funcionalidad
@@ -131,7 +131,17 @@ const botonNuevaPartida = document.querySelector(".nueva-partida");
 if (botonNuevaPartida && botonNuevaPartida instanceof HTMLButtonElement) {
   botonNuevaPartida.addEventListener("click", nuevaPartida);
 }
-
+const numeroGanador: number = 7.5;
 //funcionalidad para el botón de game over
+const gameOver = () => {
+  if (puntosTotales > numeroGanador) {
+    alert("¡HAS PERDIDO!\u{1F600}");
+    const pedirCarta = document.querySelector(".pedir-carta");
+    if (pedirCarta && pedirCarta instanceof HTMLButtonElement) {
+      pedirCarta.disabled = true;
+    }
+    
+  }
+};
 
-type Estado = "sigue jugando" | "has acertado" | "has perdido";
+type Estado = "Sigue jugando" | "Has Acertado" | "Has perdido";
