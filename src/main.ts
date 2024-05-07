@@ -1,27 +1,18 @@
-let puntosTotales: number = 4;
-
-const Puntuacion = document.querySelector(".puntuacion");
-const pedirCarta = document.querySelector(".pedir-carta");
-
+let puntosTotales: number = 0;
 //capturando el botón de pedir carta y agregando funcionalidad
+const pedirCarta = document.querySelector(".pedir-carta");
 if (pedirCarta && pedirCarta instanceof HTMLButtonElement) {
   pedirCarta.addEventListener("click", pideCarta);
 }
 //función para mostrar la puntuacion
 const mostrarPuntuacion = () => {
+  const Puntuacion = document.querySelector(".puntuacion");
   if (Puntuacion !== null && Puntuacion !== undefined) {
     Puntuacion.innerHTML = puntosTotales.toString();
   }
 };
 document.addEventListener("DOMContentLoaded", mostrarPuntuacion);
-//función para obtener el valor de la carta
-const obtenerValorCarta = (carta: number) => {
-  if (carta > 7) {
-    return 0.5;
-  }
 
-  return carta;
-};
 //función para generar carta aleatoria
 const obtenerNumeroAleatorio = () => {
   return Math.floor(Math.random() * 10) + 1;
@@ -33,6 +24,14 @@ const obtenerNumeroCarta = (numeroAleatorio: number) => {
 
   return numeroAleatorio;
 };
+//función para obtener el valor de la carta
+const obtenerValorCarta = (carta: number) => {
+  if (carta > 7) {
+    return 0.5;
+  }
+
+  return carta;
+};
 // para pintar el url de cada carta
 const pintarUrlImagen = (urlCarta: string) => {
   const cartaMostrada = document.querySelector(".cardfront");
@@ -41,6 +40,7 @@ const pintarUrlImagen = (urlCarta: string) => {
     cartaMostrada.src = urlCarta;
   }
 };
+//generar puntuación
 const sumarPuntos = (puntos: number) => {
   return puntosTotales + puntos;
 };
@@ -57,8 +57,7 @@ function pideCarta() {
   const puntos = obtenerValorCarta(carta);
   const puntosSumados = sumarPuntos(puntos);
   asignarNuevosPuntos(puntosSumados);
-  
-  
+  mostrarPuntuacion();
 }
 
 //capturando las url de las imagenes
@@ -72,7 +71,7 @@ const obtenerUrlImagen = (carta: number): string => {
       break;
     case 2:
       imagen =
-        "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/2_dos-copas.jpgtps://example.com/2.png";
+        "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/2_dos-copas.jpg";
       break;
     case 3:
       imagen =
