@@ -14,10 +14,10 @@ const mostrarPuntuacion = () => {
 document.addEventListener("DOMContentLoaded", mostrarPuntuacion);
 
 //función para generar carta aleatoria
-const obtenerNumeroAleatorio = () => {
+const obtenerNumeroAleatorio = ():number => {
   return Math.floor(Math.random() * 10) + 1;
 };
-const obtenerNumeroCarta = (numeroAleatorio: number) => {
+const obtenerNumeroCarta = (numeroAleatorio: number):number => {
   if (numeroAleatorio > 7) {
     return numeroAleatorio + 2;
   }
@@ -25,7 +25,7 @@ const obtenerNumeroCarta = (numeroAleatorio: number) => {
   return numeroAleatorio;
 };
 //función para obtener el valor de la carta
-const obtenerValorCarta = (carta: number) => {
+const obtenerValorCarta = (carta: number):number => {
   if (carta > 7) {
     return 0.5;
   }
@@ -33,7 +33,7 @@ const obtenerValorCarta = (carta: number) => {
   return carta;
 };
 // para pintar el url de cada carta
-const pintarUrlImagen = (urlCarta: string) => {
+const pintarUrlImagen = (urlCarta: string):void => {
   const cartaMostrada = document.querySelector(".cardfront");
 
   if (cartaMostrada && cartaMostrada instanceof HTMLImageElement) {
@@ -49,7 +49,7 @@ const asignarNuevosPuntos = (nuevosPuntos: number) => {
 };
 
 //función para generar carta aleatoria
-function pideCarta() {
+function pideCarta():void {
   const numeroAleatorio = obtenerNumeroAleatorio();
   const carta = obtenerNumeroCarta(numeroAleatorio);
   const urlCarta = obtenerUrlImagen(carta);
@@ -114,7 +114,7 @@ const obtenerUrlImagen = (carta: number): string => {
   return imagen;
 };
 //funcionalidad nueva partida
-const nuevaPartida = () => {
+const nuevaPartida = ():void => {
   puntosTotales = 0;
   mostrarPuntuacion();
   pintarUrlImagen(
