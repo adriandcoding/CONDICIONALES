@@ -63,7 +63,7 @@ h1 {
   filter: drop-shadow(0 0 2em #3178c6aa);
 }
 
-.card {
+img {
   padding: 32px;
 }
 
@@ -80,7 +80,7 @@ h1 {
   gap: 32px;
   font-size: 50px;
   font-weight: 500;
-font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: rgb(206, 76, 29);
 }
 .puntos {
@@ -88,7 +88,7 @@ font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 50px;
   color: #ffffff;
 }
-.mal{
+.valoracion {
   color: rgb(20, 79, 11);
   font-size: 35px;
 }

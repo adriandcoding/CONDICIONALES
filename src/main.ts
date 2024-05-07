@@ -1,4 +1,5 @@
 let puntosTotales: number = 0;
+const numeroGanador: number = 7.5;
 
 //función para mostrar la puntuacion
 const mostrarPuntuacion = () => {
@@ -131,7 +132,7 @@ const botonNuevaPartida = document.querySelector(".nueva-partida");
 if (botonNuevaPartida && botonNuevaPartida instanceof HTMLButtonElement) {
   botonNuevaPartida.addEventListener("click", nuevaPartida);
 }
-const numeroGanador: number = 7.5;
+
 //funcionalidad para el botón de game over
 const gameOver = () => {
   if (puntosTotales > numeroGanador) {
@@ -140,7 +141,6 @@ const gameOver = () => {
     if (pedirCarta && pedirCarta instanceof HTMLButtonElement) {
       pedirCarta.disabled = true;
     }
-    
   }
 };
 
