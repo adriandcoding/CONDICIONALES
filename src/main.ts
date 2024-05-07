@@ -54,6 +54,7 @@ const pideCarta = (): void => {
   const puntos = obtenerValorCarta(carta);
   const puntosSumados = sumarPuntos(puntos);
   asignarNuevosPuntos(puntosSumados);
+
   gameOver();
   mostrarPuntuacion();
 };
@@ -126,6 +127,7 @@ const nuevaPartida = (): void => {
   if (pedirCarta && pedirCarta instanceof HTMLButtonElement) {
     pedirCarta.disabled = false;
   }
+ resetGame()
 };
 //capturando el botón de nueva partida y agregando funcionalidad
 const botonNuevaPartida = document.querySelector(".nueva-partida");
@@ -134,14 +136,53 @@ if (botonNuevaPartida && botonNuevaPartida instanceof HTMLButtonElement) {
 }
 
 //funcionalidad para el botón de game over
-const gameOver = () => {
+const gameOver = (): void => {
   if (puntosTotales > numeroGanador) {
     alert("¡HAS PERDIDO!\u{1F600}");
     const pedirCarta = document.querySelector(".pedir-carta");
     if (pedirCarta && pedirCarta instanceof HTMLButtonElement) {
       pedirCarta.disabled = true;
     }
+    nuevaPartida()
   }
+ 
 };
 
-type Estado = "Sigue jugando" | "Has Acertado" | "Has perdido";
+//valorar la opción al plantarse
+const valorar = () => {
+  let mensaje = "";
+  if (puntosTotales > 0) {
+    mensaje = "Sigue jugando";
+  }
+  if (puntosTotales === numeroGanador) {
+    mensaje = "Has Acertado";
+  }
+
+  return mensaje;
+};
+//funcionalidad de plantarse
+const plantarse = () => {
+  const pedirCarta = document.querySelector(".pedir-carta");
+  if (pedirCarta && pedirCarta instanceof HTMLButtonElement) {
+    pedirCarta.disabled = true;
+  }
+  const valoracion = document.querySelector(".valoracion");
+  if (valoracion) {
+    valoracion.innerHTML = valorar();
+  }
+  
+};
+let botonPlantarse = document.querySelector(".plantarse");
+if (botonPlantarse && botonPlantarse instanceof HTMLButtonElement) {
+  botonPlantarse.addEventListener("click", plantarse);
+}
+const resetGame = () => {
+  const pedirCarta = document.querySelector(".pedir-carta");
+  if (pedirCarta && pedirCarta instanceof HTMLButtonElement) {
+    pedirCarta.disabled = false;
+  }
+  const valoracion = document.querySelector(".valoracion");
+  if (valoracion) {
+    valoracion.innerHTML = "";
+  }
+}
