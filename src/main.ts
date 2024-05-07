@@ -48,7 +48,7 @@ const asignarNuevosPuntos = (nuevosPuntos: number) => {
   puntosTotales = nuevosPuntos;
 };
 
-//función para generar carta aleatoria
+//función para generar cartas aleatorias
 function pideCarta():void {
   const numeroAleatorio = obtenerNumeroAleatorio();
   const carta = obtenerNumeroCarta(numeroAleatorio);
