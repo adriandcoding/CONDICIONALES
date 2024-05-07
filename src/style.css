@@ -26,7 +26,7 @@ a:hover {
 }
 
 body {
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(7, 130, 60);
   margin: 0;
   display: flex;
   place-items: center;
@@ -38,7 +38,7 @@ body {
   display: flex;
 }
 h1 {
-  color: black;
+  color: rgb(255, 255, 255);
   font-size: 32px;
   line-height: 1.1;
 }
@@ -87,7 +87,11 @@ h1 {
 .puntos {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 50px;
-  color: #000000;
+  color: #ffffff;
+}
+.mal{
+  color: rgb(20, 79, 11);
+  font-size: 35px;
 }
 button {
   border-radius: 8px;

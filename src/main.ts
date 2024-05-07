@@ -1,9 +1,5 @@
 let puntosTotales: number = 0;
-//capturando el botón de pedir carta y agregando funcionalidad
-const pedirCarta = document.querySelector(".pedir-carta");
-if (pedirCarta && pedirCarta instanceof HTMLButtonElement) {
-  pedirCarta.addEventListener("click", pideCarta);
-}
+
 //función para mostrar la puntuacion
 const mostrarPuntuacion = () => {
   const Puntuacion = document.querySelector(".puntuacion");
@@ -14,10 +10,10 @@ const mostrarPuntuacion = () => {
 document.addEventListener("DOMContentLoaded", mostrarPuntuacion);
 
 //función para generar carta aleatoria
-const obtenerNumeroAleatorio = ():number => {
+const obtenerNumeroAleatorio = (): number => {
   return Math.floor(Math.random() * 10) + 1;
 };
-const obtenerNumeroCarta = (numeroAleatorio: number):number => {
+const obtenerNumeroCarta = (numeroAleatorio: number): number => {
   if (numeroAleatorio > 7) {
     return numeroAleatorio + 2;
   }
@@ -25,7 +21,7 @@ const obtenerNumeroCarta = (numeroAleatorio: number):number => {
   return numeroAleatorio;
 };
 //función para obtener el valor de la carta
-const obtenerValorCarta = (carta: number):number => {
+const obtenerValorCarta = (carta: number): number => {
   if (carta > 7) {
     return 0.5;
   }
@@ -33,7 +29,7 @@ const obtenerValorCarta = (carta: number):number => {
   return carta;
 };
 // para pintar el url de cada carta
-const pintarUrlImagen = (urlCarta: string):void => {
+const pintarUrlImagen = (urlCarta: string): void => {
   const cartaMostrada = document.querySelector(".cardfront");
 
   if (cartaMostrada && cartaMostrada instanceof HTMLImageElement) {
@@ -48,8 +44,8 @@ const asignarNuevosPuntos = (nuevosPuntos: number) => {
   puntosTotales = nuevosPuntos;
 };
 
-//función para generar cartas aleatorias
-function pideCarta():void {
+// pedir carta
+const pideCarta = (): void => {
   const numeroAleatorio = obtenerNumeroAleatorio();
   const carta = obtenerNumeroCarta(numeroAleatorio);
   const urlCarta = obtenerUrlImagen(carta);
@@ -57,8 +53,13 @@ function pideCarta():void {
   const puntos = obtenerValorCarta(carta);
   const puntosSumados = sumarPuntos(puntos);
   asignarNuevosPuntos(puntosSumados);
-  gameOver();
+
   mostrarPuntuacion();
+};
+//capturando el botón de pedir carta y agregando funcionalidad
+const pedirCarta = document.querySelector(".pedir-carta");
+if (pedirCarta && pedirCarta instanceof HTMLButtonElement) {
+  pedirCarta.addEventListener("click", pideCarta);
 }
 
 //capturando las url de las imagenes
@@ -113,31 +114,24 @@ const obtenerUrlImagen = (carta: number): string => {
   }
   return imagen;
 };
-//funcionalidad nueva partida
-const nuevaPartida = ():void => {
+// nueva partida
+const nuevaPartida = (): void => {
   puntosTotales = 0;
   mostrarPuntuacion();
   pintarUrlImagen(
     "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/back.jpg"
   );
   const pedirCarta = document.querySelector(".pedir-carta");
-    if (pedirCarta && pedirCarta instanceof HTMLButtonElement) {
-      pedirCarta.disabled = false;
-    }
-};
-const botonReiniciar = document.querySelector(".nueva-partida");
-if (botonReiniciar && botonReiniciar instanceof HTMLButtonElement) {
-  botonReiniciar.addEventListener("click", nuevaPartida);
-}
-const gameOver = () => {
-  if (puntosTotales > 7 && pedirCarta instanceof HTMLButtonElement) {
-    alert("mal");
-    const pedirCarta = document.querySelector(".pedir-carta");
-    if (pedirCarta && pedirCarta instanceof HTMLButtonElement) {
-      pedirCarta.disabled = true;
-    }
-    
+  if (pedirCarta && pedirCarta instanceof HTMLButtonElement) {
+    pedirCarta.disabled = false;
   }
 };
+//capturando el botón de nueva partida y agregando funcionalidad
+const botonNuevaPartida = document.querySelector(".nueva-partida");
+if (botonNuevaPartida && botonNuevaPartida instanceof HTMLButtonElement) {
+  botonNuevaPartida.addEventListener("click", nuevaPartida);
+}
+
+//funcionalidad para el botón de game over
 
 type Estado = "sigue jugando" | "has acertado" | "has perdido";
