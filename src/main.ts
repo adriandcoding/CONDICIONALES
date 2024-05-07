@@ -1,29 +1,71 @@
-let puntos: number = 4;
+let puntosTotales: number = 4;
 
 const Puntuacion = document.querySelector(".puntuacion");
 const pedirCarta = document.querySelector(".pedir-carta");
-const cartaMostrada = document.querySelector(".cardfront")
 
+//capturando el botón de pedir carta y agregando funcionalidad
+if (pedirCarta && pedirCarta instanceof HTMLButtonElement) {
+  pedirCarta.addEventListener("click", pideCarta);
+}
 //función para mostrar la puntuacion
 const mostrarPuntuacion = () => {
   if (Puntuacion !== null && Puntuacion !== undefined) {
-    Puntuacion.innerHTML = puntos.toString();
+    Puntuacion.innerHTML = puntosTotales.toString();
   }
 };
 document.addEventListener("DOMContentLoaded", mostrarPuntuacion);
+//función para obtener el valor de la carta
+const obtenerValorCarta = (carta: number) => {
+  if (carta > 7) {
+    return 0.5;
+  }
+
+  return carta;
+};
+//función para generar carta aleatoria
+const obtenerNumeroAleatorio = () => {
+  return Math.floor(Math.random() * 10) + 1;
+};
+const obtenerNumeroCarta = (numeroAleatorio: number) => {
+  if (numeroAleatorio > 7) {
+    return numeroAleatorio + 2;
+  }
+
+  return numeroAleatorio;
+};
+// para pintar el url de cada carta
+const pintarUrlImagen = (urlCarta: string) => {
+  const cartaMostrada = document.querySelector(".cardfront");
+
+  if (cartaMostrada && cartaMostrada instanceof HTMLImageElement) {
+    cartaMostrada.src = urlCarta;
+  }
+};
+const sumarPuntos = (puntos: number) => {
+  return puntosTotales + puntos;
+};
+const asignarNuevosPuntos = (nuevosPuntos: number) => {
+  puntosTotales = nuevosPuntos;
+};
 
 //función para generar carta aleatoria
 function pideCarta() {
-  let cartaAleatoria = Math.floor(Math.random() * 10) + 1;
-  while (cartaAleatoria === 8 || cartaAleatoria === 9) {
-    cartaAleatoria = Math.floor(Math.random() * 10) + 1;
-  }
-  return cartaAleatoria;
+  const numeroAleatorio = obtenerNumeroAleatorio();
+  const carta = obtenerNumeroCarta(numeroAleatorio);
+  const urlCarta = obtenerUrlImagen(carta);
+  pintarUrlImagen(urlCarta);
+  const puntos = obtenerValorCarta(carta);
+  const puntosSumados = sumarPuntos(puntos);
+  asignarNuevosPuntos(puntosSumados);
+  
+  
 }
-const mostrarCarta = (cartaAleatoria: number): string => {
+
+//capturando las url de las imagenes
+const obtenerUrlImagen = (carta: number): string => {
   let imagen;
-// Mapeando el valor
-  switch (cartaAleatoria) {
+  // Mapeando el valor
+  switch (carta) {
     case 1:
       imagen =
         "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/1_as-copas.jpg";
@@ -71,8 +113,3 @@ const mostrarCarta = (cartaAleatoria: number): string => {
   }
   return imagen;
 };
-//capturando el botón de pedir carta y agregando funcionalidad
-if (pedirCarta && pedirCarta instanceof HTMLButtonElement) {
-  pedirCarta.addEventListener("click",pideCarta);
-}
-
