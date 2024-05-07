@@ -57,6 +57,7 @@ function pideCarta() {
   const puntos = obtenerValorCarta(carta);
   const puntosSumados = sumarPuntos(puntos);
   asignarNuevosPuntos(puntosSumados);
+  gameOver();
   mostrarPuntuacion();
 }
 
@@ -112,3 +113,31 @@ const obtenerUrlImagen = (carta: number): string => {
   }
   return imagen;
 };
+//funcionalidad nueva partida
+const nuevaPartida = () => {
+  puntosTotales = 0;
+  mostrarPuntuacion();
+  pintarUrlImagen(
+    "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/back.jpg"
+  );
+  const pedirCarta = document.querySelector(".pedir-carta");
+    if (pedirCarta && pedirCarta instanceof HTMLButtonElement) {
+      pedirCarta.disabled = false;
+    }
+};
+const botonReiniciar = document.querySelector(".nueva-partida");
+if (botonReiniciar && botonReiniciar instanceof HTMLButtonElement) {
+  botonReiniciar.addEventListener("click", nuevaPartida);
+}
+const gameOver = () => {
+  if (puntosTotales > 7 && pedirCarta instanceof HTMLButtonElement) {
+    alert("mal");
+    const pedirCarta = document.querySelector(".pedir-carta");
+    if (pedirCarta && pedirCarta instanceof HTMLButtonElement) {
+      pedirCarta.disabled = true;
+    }
+    
+  }
+};
+
+type Estado = "sigue jugando" | "has acertado" | "has perdido";
