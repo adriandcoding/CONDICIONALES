@@ -3,9 +3,9 @@ const numeroGanador: number = 7.5;
 
 //función para mostrar la puntuacion
 const mostrarPuntuacion = () => {
-  const Puntuacion = document.querySelector(".puntuacion");
-  if (Puntuacion !== null && Puntuacion !== undefined) {
-    Puntuacion.innerHTML = puntosTotales.toString();
+  const puntuacion = document.querySelector(".puntuacion");
+  if (puntuacion && puntuacion instanceof HTMLParagraphElement) {
+    puntuacion.innerHTML = puntosTotales.toString();
   }
 };
 document.addEventListener("DOMContentLoaded", mostrarPuntuacion);
@@ -44,6 +44,19 @@ const sumarPuntos = (puntos: number) => {
 const asignarNuevosPuntos = (nuevosPuntos: number) => {
   puntosTotales = nuevosPuntos;
 };
+//funcionalidad para el botón de game over
+const gameOver = (): void => {
+  alert("¡HAS PERDIDO!\u{1F600}");
+  deshabilitarBotonPedirCarta(true);
+};
+const checkearPartida = () => {
+  if (puntosTotales === 7.5) {
+    alert("¡HAS GANADO!\u{1F600}");
+  }
+  if (puntosTotales > 7.5) {
+    gameOver();
+  }
+};
 
 // pedir carta
 const pideCarta = (): void => {
@@ -54,8 +67,7 @@ const pideCarta = (): void => {
   const puntos = obtenerValorCarta(carta);
   const puntosSumados = sumarPuntos(puntos);
   asignarNuevosPuntos(puntosSumados);
-
-  gameOver();
+  checkearPartida();
   mostrarPuntuacion();
 };
 //capturando el botón de pedir carta y agregando funcionalidad
@@ -135,18 +147,6 @@ if (botonNuevaPartida && botonNuevaPartida instanceof HTMLButtonElement) {
   botonNuevaPartida.addEventListener("click", nuevaPartida);
 }
 
-//funcionalidad para el botón de game over
-const gameOver = (): void => {
-  if (puntosTotales > numeroGanador) {
-    alert("¡HAS PERDIDO!\u{1F600}");
-
-    const pedirCarta = document.querySelector(".pedir-carta");
-    if (pedirCarta && pedirCarta instanceof HTMLButtonElement) {
-      pedirCarta.disabled = true;
-    }
-  }
-};
-
 //valorar la opción al plantarse
 const valorar = (): string => {
   let mensaje: string = "";
@@ -167,16 +167,18 @@ const valorar = (): string => {
 };
 //funcionalidad de plantarse
 const plantarse = (): void => {
-  const pedirCarta = document.querySelector(".pedir-carta");
-  if (pedirCarta && pedirCarta instanceof HTMLButtonElement) {
-    pedirCarta.disabled = true;
-  }
+  deshabilitarBotonPedirCarta(true);
   const valoracion = document.querySelector(".valoracion");
-  if (valoracion) {
+  if (valoracion && valoracion instanceof HTMLHeadingElement) {
     valoracion.innerHTML = valorar();
   }
-  if (BotonYsi && BotonYsi instanceof HTMLButtonElement) {
-    BotonYsi.addEventListener("click", pideCarta);
+};
+
+// funcion deshabilitar botón de pedir carta
+const deshabilitarBotonPedirCarta = (estaDeshabilitado: boolean) => {
+  const pedirCarta = document.querySelector(".pedir-carta");
+  if (pedirCarta && pedirCarta instanceof HTMLButtonElement) {
+    pedirCarta.disabled = estaDeshabilitado;
   }
 };
 let botonPlantarse = document.querySelector(".plantarse");
@@ -184,14 +186,14 @@ if (botonPlantarse && botonPlantarse instanceof HTMLButtonElement) {
   botonPlantarse.addEventListener("click", plantarse);
 }
 const BotonYsi = document.querySelector(".ysi");
+if (BotonYsi && BotonYsi instanceof HTMLButtonElement) {
+  BotonYsi.addEventListener("click", pideCarta);
+}
 //Boton para resetear y dejar valores por defecto
 const resetGame = (): void => {
-  const pedirCarta = document.querySelector(".pedir-carta");
-  if (pedirCarta && pedirCarta instanceof HTMLButtonElement) {
-    pedirCarta.disabled = false;
-  }
+  deshabilitarBotonPedirCarta(false);
   const valoracion = document.querySelector(".valoracion");
-  if (valoracion) {
+  if (valoracion && valoracion instanceof HTMLHeadingElement) {
     valoracion.innerHTML = "";
   }
 };
