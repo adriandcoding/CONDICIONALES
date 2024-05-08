@@ -184,7 +184,7 @@ if (botonPlantarse && botonPlantarse instanceof HTMLButtonElement) {
   botonPlantarse.addEventListener("click", plantarse);
 }
 const BotonYsi = document.querySelector(".ysi");
-//Botón para resetear y dejar valores por defecto
+//Boton para resetear y dejar valores por defecto
 const resetGame = (): void => {
   const pedirCarta = document.querySelector(".pedir-carta");
   if (pedirCarta && pedirCarta instanceof HTMLButtonElement) {
