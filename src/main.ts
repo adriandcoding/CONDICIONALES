@@ -143,13 +143,14 @@ const gameOver = (): void => {
     const pedirCarta = document.querySelector(".pedir-carta");
     if (pedirCarta && pedirCarta instanceof HTMLButtonElement) {
       pedirCarta.disabled = true;
+      
     }
   }
 };
 
 //valorar la opción al plantarse
 const valorar = (): string => {
-  let mensaje = "";
+  let mensaje:string = "";
   if (puntosTotales < 4) {
     mensaje = "Has sido muy conservador";
   }
@@ -166,7 +167,7 @@ const valorar = (): string => {
   return mensaje;
 };
 //funcionalidad de plantarse
-const plantarse = () => {
+const plantarse = ():void => {
   const pedirCarta = document.querySelector(".pedir-carta");
   if (pedirCarta && pedirCarta instanceof HTMLButtonElement) {
     pedirCarta.disabled = true;
@@ -184,7 +185,7 @@ if (botonPlantarse && botonPlantarse instanceof HTMLButtonElement) {
   botonPlantarse.addEventListener("click", plantarse);
 }
 //Botón para resetear y dejar valores por defecto
-const resetGame = () => {
+const resetGame = ():void => {
   const pedirCarta = document.querySelector(".pedir-carta");
   if (pedirCarta && pedirCarta instanceof HTMLButtonElement) {
     pedirCarta.disabled = false;
