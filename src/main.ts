@@ -7,6 +7,7 @@ const mostrarPuntuacion = () => {
   if (puntuacion && puntuacion instanceof HTMLParagraphElement) {
     puntuacion.innerHTML = puntosTotales.toString();
   }
+  deshabilitarBotonYsi(true)
 };
 document.addEventListener("DOMContentLoaded", mostrarPuntuacion);
 
@@ -168,6 +169,7 @@ const valorar = (): string => {
 //funcionalidad de plantarse
 const plantarse = (): void => {
   deshabilitarBotonPedirCarta(true);
+  deshabilitarBotonYsi(false);
   const valoracion = document.querySelector(".valoracion");
   if (valoracion && valoracion instanceof HTMLHeadingElement) {
     valoracion.innerHTML = valorar();
@@ -181,17 +183,24 @@ const deshabilitarBotonPedirCarta = (estaDeshabilitado: boolean) => {
     pedirCarta.disabled = estaDeshabilitado;
   }
 };
+//funcionalidad boton de plantarse
 let botonPlantarse = document.querySelector(".plantarse");
 if (botonPlantarse && botonPlantarse instanceof HTMLButtonElement) {
   botonPlantarse.addEventListener("click", plantarse);
 }
+const deshabilitarBotonYsi = (estaDeshabilitado: boolean) => {
+  const botonPlantarse = document.querySelector(".ysi");
+  if (botonPlantarse && botonPlantarse instanceof HTMLButtonElement) {
+    botonPlantarse.disabled = estaDeshabilitado;
+  }
+};
 const BotonYsi = document.querySelector(".ysi");
 if (BotonYsi && BotonYsi instanceof HTMLButtonElement) {
   BotonYsi.addEventListener("click", pideCarta);
 }
 //Boton para resetear y dejar valores por defecto
 const resetGame = (): void => {
-  deshabilitarBotonPedirCarta(false);
+  
   const valoracion = document.querySelector(".valoracion");
   if (valoracion && valoracion instanceof HTMLHeadingElement) {
     valoracion.innerHTML = "";
