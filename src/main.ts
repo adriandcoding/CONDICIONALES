@@ -143,14 +143,13 @@ const gameOver = (): void => {
     const pedirCarta = document.querySelector(".pedir-carta");
     if (pedirCarta && pedirCarta instanceof HTMLButtonElement) {
       pedirCarta.disabled = true;
-      
     }
   }
 };
 
 //valorar la opción al plantarse
 const valorar = (): string => {
-  let mensaje:string = "";
+  let mensaje: string = "";
   if (puntosTotales < 4) {
     mensaje = "Has sido muy conservador";
   }
@@ -167,7 +166,7 @@ const valorar = (): string => {
   return mensaje;
 };
 //funcionalidad de plantarse
-const plantarse = ():void => {
+const plantarse = (): void => {
   const pedirCarta = document.querySelector(".pedir-carta");
   if (pedirCarta && pedirCarta instanceof HTMLButtonElement) {
     pedirCarta.disabled = true;
@@ -177,15 +176,16 @@ const plantarse = ():void => {
     valoracion.innerHTML = valorar();
   }
   if (BotonYsi && BotonYsi instanceof HTMLButtonElement) {
-    BotonYsi.addEventListener("click",pideCarta);
+    BotonYsi.addEventListener("click", pideCarta);
   }
 };
 let botonPlantarse = document.querySelector(".plantarse");
 if (botonPlantarse && botonPlantarse instanceof HTMLButtonElement) {
   botonPlantarse.addEventListener("click", plantarse);
 }
+const BotonYsi = document.querySelector(".ysi");
 //Botón para resetear y dejar valores por defecto
-const resetGame = ():void => {
+const resetGame = (): void => {
   const pedirCarta = document.querySelector(".pedir-carta");
   if (pedirCarta && pedirCarta instanceof HTMLButtonElement) {
     pedirCarta.disabled = false;
@@ -195,6 +195,3 @@ const resetGame = ():void => {
     valoracion.innerHTML = "";
   }
 };
-const BotonYsi = document.querySelector(".ysi");
-
-
